@@ -1,8 +1,9 @@
 {
-  "main": "./src/main.ts",
+  "main": "./app/app.ts",
+  "description": "NativeScript Application",
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@marblsy/rich-text-editor": "file:../../dist/packages/rich-text-editor"
+    "@marblsy/rich-text-editor": "file:../../packages/rich-text-editor"
   },
   "devDependencies": {
     "@nativescript/android": "~8.8.0",

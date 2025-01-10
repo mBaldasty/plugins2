@@ -21,7 +21,8 @@
     ],
     "paths": {
       "@demo/shared": ["tools/demo/index.ts"],
-      "@marblsy/*": ["packages/*"]
+      "@marblsy/*": ["packages/*"],
+      "@marblsy/rich-text-editor": ["packages/rich-text-editor/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

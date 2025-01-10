@@ -1,0 +1,17 @@
+{
+  "name": "@marblsy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mBaldasty/plugins2.git"
+  },
+  "keywords": ["NativeScript", "JavaScript", "TypeScript", "iOS", "Android"],
+  "author": {
+    "name": "MN",
+    "email": "oss@nativescript.org"
+  },
+  "bugs": {
+    "url": "https://github.com/mBaldasty/plugins2/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/mBaldasty/plugins2"
+}

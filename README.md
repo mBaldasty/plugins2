@@ -5,7 +5,7 @@ npm run setup
 npm start
 ```
 
-- @marblsy
+- [@marblsy/rich-text-editor](packages/rich-text-editor/README.md)
 
 # How to use?
 

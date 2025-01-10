@@ -1,0 +1,65 @@
+{
+  "name": "rich-text-editor",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/rich-text-editor",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/rich-text-editor",
+        "tsConfig": "packages/rich-text-editor/tsconfig.json",
+        "packageJson": "packages/rich-text-editor/package.json",
+        "main": "packages/rich-text-editor/index.d.ts",
+        "assets": [
+          "packages/rich-text-editor/*.md",
+          "packages/rich-text-editor/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/rich-text-editor/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts rich-text-editor"],
+        "parallel": false
+      },
+      "outputs": ["{workspaceRoot}/dist/packages/rich-text-editor"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages rich-text-editor"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/rich-text-editor/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -12,7 +12,11 @@
     "publish-packages": "nx g @nativescript/plugin-tools:publish",
     "sync-packages-with-demos": "nx g @nativescript/plugin-tools:sync-packages-with-demos",
     "remove-package": "nx g @nativescript/plugin-tools:remove-package",
-    "add-demo": "nx g @nativescript/plugin-tools:add-demo"
+    "add-demo": "nx g @nativescript/plugin-tools:add-demo",
+    "demo.vue.android": "cd ./apps/demo-vue && ns run android --no-hmr --env.watchNodeModules",
+    "demo.vue.clean": "cd ./apps/demo-vue && ns clean",
+    "demo.vue.ios": "cd ./apps/demo-vue && ns run ios --no-hmr --env.watchNodeModules --simulator",
+    "demo.vue.ios.device": "cd ./apps/demo-vue && ns run ios --no-hmr --env.watchNodeModules --device"
   },
   "private": true,
   "devDependencies": {
@@ -36,7 +40,10 @@
     "ng-packagr": "^18.0.0",
     "rxjs": "~7.8.0",
     "typescript": "~5.5.0",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.14.0",
+    "nativescript-vue-template-compiler": "^2.9.3",
+    "nativescript-vue": "^2.9.3",
+    "vue": "~2.6.12"
   },
   "lint-staged": {
     "**/*.{js,ts,scss,json,html}": [
