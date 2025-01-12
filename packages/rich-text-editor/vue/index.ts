@@ -4,7 +4,7 @@ export default {
   install(Vue) {
     if (!installed) {
       installed = true;
-      Vue.registerElement('RichEditor', () => RichEditor, {});
+      Vue.registerElement('RichEditor', () => RichEditor);
     }
   },
 };

@@ -1,4 +1,4 @@
-import { View } from '@nativescript/core';
+import { ContentView, View } from '@nativescript/core';
 
 export type RichEditorData = {
   text?: string;

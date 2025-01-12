@@ -5,7 +5,7 @@ export declare class RichTextEditor extends RichTextEditorCommon {
 
 }
 */
-import { View } from '@nativescript/core';
+import { View, ContentView } from '@nativescript/core';
 
 export * from './common';
 
