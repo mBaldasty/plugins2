@@ -1,3 +1,7 @@
+//
+//  DemoEditorScreen.swift
+//  Demo
+//
 //  Created by Daniel Saidi on 2024-03-04.
 //  Copyright © 2024 Kankoda Sweden AB. All rights reserved.
 //
@@ -16,14 +20,25 @@ struct RichEditor: View {
             RichTextFormat.Toolbar(context: context)
             #endif
             RichTextEditor(
-                text: Binding(
-                    get: { data.nonOptionalText },
-                    set: { newValue in data.text = newValue }
-                ),
-                context: context
+                    text: Binding(
+                        get: { data.nonOptionalText },
+                        set: { newValue in
+                            // Only fires when actual text characters change
+                            // Not when styles are applied necessarily
+                            data.text = newValue
+                            data.onEvent!(["textChange": newValue])
+                        }
+                    ),
+                    context: context
             ) {
                 $0.textContentInset = CGSize(width: data.insetWidth, height: data.insetHeight)
             }
+            // This could be used to pick up style changes
+            // Just want to decide how to identify the styles
+            // These come through as enums at the moment
+            // .onReceive(context.objectWillChange) {
+            //     data.onEvent!(["contextChange": context.styles])
+            // }
             // Use this to just view the text:
             // RichTextViewer(document.text)
             #if os(iOS)
@@ -97,7 +112,7 @@ class RichEditorData: ObservableObject {
     var nonOptionalText: NSAttributedString {
         text ?? NSAttributedString(string: "")
     }
-
+    
     @Published var modifiers = NSArray()
     var onEvent: ((NSDictionary) -> Void)?
 }
@@ -107,22 +122,22 @@ class RichEditorData: ObservableObject {
 class RichEditorProvider: UIViewController, SwiftUIProvider {
     private var props = RichEditorData()
     private var swiftUI: RichEditor?
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     required public init() {
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         props.onEvent = { data in
             self.onEvent!(data)
         }
     }
-
+    
     /// Receive data from NativeScript
     func updateData(data: NSDictionary) {
         let enumerator = data.keyEnumerator()
@@ -143,7 +158,7 @@ class RichEditorProvider: UIViewController, SwiftUIProvider {
                 }
             }
         }
-
+        
         if (self.swiftUI == nil) {
             swiftUI = RichEditor(data: props)
             setupSwiftUIView(content: swiftUI)
@@ -152,7 +167,7 @@ class RichEditorProvider: UIViewController, SwiftUIProvider {
             self.swiftUI?.data = props
         }
     }
-
+    
     /// Send data to NativeScript
     var onEvent: ((NSDictionary) -> ())?
 }

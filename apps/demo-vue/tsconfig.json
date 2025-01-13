@@ -9,5 +9,6 @@
       "@marblsy/*": ["../../packages/*"],
       "@marblsy/rich-text-editor": ["../../packages/rich-text-editor/index.d.ts"]
     }
-  }
+  },
+  "include": ["./app/**/*.ts", "../../packages/**/*.ts"]
 }

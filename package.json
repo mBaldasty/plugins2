@@ -37,17 +37,20 @@
     "@nativescript/webpack": "~5.0.22",
     "@ngtools/webpack": "^18.0.0",
     "husky": "~9.0.0",
+    "nativescript-vue": "^2.9.3",
+    "nativescript-vue-template-compiler": "^2.9.3",
     "ng-packagr": "^18.0.0",
     "rxjs": "~7.8.0",
     "typescript": "~5.5.0",
-    "zone.js": "~0.14.0",
-    "nativescript-vue-template-compiler": "^2.9.3",
-    "nativescript-vue": "^2.9.3",
-    "vue": "~2.6.12"
+    "vue": "~2.6.12",
+    "zone.js": "~0.14.0"
   },
   "lint-staged": {
     "**/*.{js,ts,scss,json,html}": [
       "npx prettier --write"
     ]
+  },
+  "dependencies": {
+    "@nativescript/swift-ui": "^4.0.2"
   }
 }

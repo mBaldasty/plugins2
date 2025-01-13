@@ -6,7 +6,24 @@ npm install @marblsy/rich-text-editor
 
 ## Usage
 
-// TODO
+Configure iOS to use the Swift package.
+
+### iOS
+
+For iOS, configure your `nativescript.config.ts` to use the Swift Package:
+
+```ts
+ios: {
+    SPMPackages: [
+        {
+            name: 'RichTextKit',
+            libs: ['RichTextKit'],
+            repositoryURL: 'https://github.com/danielsaidi/RichTextKit.git',
+            version: '1.1.2',
+        },
+    ],
+},
+```
 
 ## License
 

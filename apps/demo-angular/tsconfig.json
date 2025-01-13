@@ -5,7 +5,7 @@
       "~/*": ["src/*"],
       "@demo/shared": ["tools/demo/index.ts"],
       "@marblsy/*": ["../../dist/packages/*"],
-      "@marblsy/rich-text-editor": ["../../packages/rich-text-editor/index.d.ts"]
+      "@marblsy/rich-text-editor": ["packages/rich-text-editor/index.ios.ts"]
     }
   },
   "files": ["./references.d.ts", "./src/main.ts", "./src/polyfills.ts"],

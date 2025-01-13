@@ -1,40 +1,34 @@
 <template>
   <Page>
-    <ActionBar>
-      <Label text="rich-text-editor"/>
+    <ActionBar title="rich-text-editor" class="action-bar">
+      <ActionItem ios.systemIcon="2" ios.position="right" android.position="actionBar" @tap="openTools" android:text="Link"></ActionItem>
     </ActionBar>
 
-    <GridLayout backgroundColor="red">
-      <RichEditor/>
+    <GridLayout class="p-20" rows="*">
+      <RichEditor :data="data" @textChange="textChange" @loaded="loadedEditor" />
     </GridLayout>
   </Page>
 </template>
 
 <script>
-import Vue from "nativescript-vue";
+import Vue from 'nativescript-vue';
 import { DemoSharedRichTextEditor } from '@demo/shared';
-import { } from '@marblsy/rich-text-editor';
+const demoShared = new DemoSharedRichTextEditor();
+
 export default {
   mounted() {
+    demoShared.on('propertyChange', () => {
+      // reacting to {N} observable to update Vue2 reactive binding
+      this.data = demoShared.data;
+    });
   },
   data() {
     return {
-
-    }
+      data: demoShared.data,
+      openTools: demoShared.openTools.bind(demoShared),
+      textChange: demoShared.textChange.bind(demoShared),
+      loadedEditor: demoShared.loadedEditor.bind(demoShared),
+    };
   },
-  computed: {
-    message() {
-      return "Test rich-text-editor";
-    }
-  }
-}
+};
 </script>
-
-<style>
-
-  .info {
-    font-size: 20;
-    horizontal-align: center;
-    vertical-align: center;
-  }
-</style>

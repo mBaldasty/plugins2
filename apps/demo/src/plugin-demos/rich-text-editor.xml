@@ -1,14 +1,11 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
-    <Page.actionBar>
-        <ActionBar title="rich-text-editor" icon="" class="action-bar">
-        </ActionBar>
-    </Page.actionBar>
-    <StackLayout class="p-20">
-        <ScrollView class="h-full">
-          <StackLayout>
-            <Button text="Test rich-text-editor" tap="{{ testIt }}" class="btn btn-primary"/>
-
-          </StackLayout>
-        </ScrollView>
-    </StackLayout>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page"
+  xmlns:mb="@marblsy/rich-text-editor">
+  <Page.actionBar>
+    <ActionBar title="rich-text-editor" class="action-bar">
+      <ActionItem ios.systemIcon="2" ios.position="right" android.position="actionBar" tap="{{openTools}}" android:text="Link"></ActionItem>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout class="p-20" rows="*">
+    <mb:RichEditor data="{{ data }}" textChange="{{ textChange }}" loaded="{{ loadedEditor }}" />
+  </GridLayout>
 </Page>
