@@ -1,4 +1,4 @@
-import { ContentView, View } from '@nativescript/core';
+import { View } from '@nativescript/core';
 
 export type RichEditorData = {
   text?: string;
@@ -14,6 +14,6 @@ export type RichEditorData = {
 export interface RichEditorType {
   data: RichEditorData;
 }
-export class RichTextEditorCommon extends View {
+export class RichEditorCommon extends View {
   data: RichEditorData;
 }

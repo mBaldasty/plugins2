@@ -1,0 +1,7 @@
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'jp.wasabeef:richeditor-android:2.0.0'
+}
